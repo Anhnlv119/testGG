@@ -26,37 +26,40 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <form id="dataForm">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
-        
+
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>
-        
+
         <label for="message">Message:</label>
         <textarea id="message" name="message" required></textarea><br><br>
-        
+
         <button type="submit">Submit</button>
     </form>
-    
+
     <script>
         const scriptURL = "https://script.google.com/macros/s/AKfycbwXz2mS8egydn7hasQ9uVyem2iRzVeCVTPjA_d17_KDDitSsEqnpdgawsbHy99RKoYy9g/exec";  // Add your Google Apps Script URL here
-    
+
         const form = document.getElementById("dataForm");
-    
+
         form.addEventListener("submit", e => {
             e.preventDefault();
-            fetch(scriptURL, { method: "POST", body: new FormData(form)})
+            fetch(scriptURL, { method: "POST", mode: "no-cors", body: new FormData(form) })
                 .then(response => alert("Form submitted successfully!"))
                 .catch(error => alert("Error! " + error.message));
         });
     </script>
-    
+
 </body>
+
 </html>
